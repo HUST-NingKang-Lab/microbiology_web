@@ -40,4 +40,5 @@
 <div ui-view></div>
 <footer class="footer">this is footer</footer>
 </body>
+
 </html>
