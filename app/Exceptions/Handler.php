@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiology_web\Exceptions;
+namespace microbiome\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

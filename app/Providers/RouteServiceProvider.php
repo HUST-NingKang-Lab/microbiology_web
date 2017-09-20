@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiology_web\Providers;
+namespace microbiome\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'microbiology_web\Http\Controllers';
+    protected $namespace = 'microbiome\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

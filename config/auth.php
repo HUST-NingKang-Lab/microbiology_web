@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => microbiology_web\User::class,
+            'model' => microbiome\User::class,
         ],
 
         // 'users' => [

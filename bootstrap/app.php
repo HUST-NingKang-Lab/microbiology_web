@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    microbiology_web\Http\Kernel::class
+    microbiome\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    microbiology_web\Console\Kernel::class
+    microbiome\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    microbiology_web\Exceptions\Handler::class
+    microbiome\Exceptions\Handler::class
 );
 
 /*

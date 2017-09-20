@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiology_web\Http\Controllers;
+namespace microbiome\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        microbiology_web\Providers\AppServiceProvider::class,
-        microbiology_web\Providers\AuthServiceProvider::class,
-        // microbiology_web\Providers\BroadcastServiceProvider::class,
-        microbiology_web\Providers\EventServiceProvider::class,
-        microbiology_web\Providers\RouteServiceProvider::class,
+        microbiome\Providers\AppServiceProvider::class,
+        microbiome\Providers\AuthServiceProvider::class,
+        // microbiome\Providers\BroadcastServiceProvider::class,
+        microbiome\Providers\EventServiceProvider::class,
+        microbiome\Providers\RouteServiceProvider::class,
 
     ],
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiology_web;
+namespace microbiome;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

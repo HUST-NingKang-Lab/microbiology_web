@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => microbiology_web\User::class,
+        'model' => microbiome\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

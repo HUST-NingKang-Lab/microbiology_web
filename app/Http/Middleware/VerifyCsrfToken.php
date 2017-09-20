@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiology_web\Http\Middleware;
+namespace microbiome\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 

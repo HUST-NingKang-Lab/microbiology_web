@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiology_web\Providers;
+namespace microbiome\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'microbiology_web\Events\Event' => [
-            'microbiology_web\Listeners\EventListener',
+        'microbiome\Events\Event' => [
+            'microbiome\Listeners\EventListener',
         ],
     ];
 

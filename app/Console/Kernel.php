@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiology_web\Console;
+namespace microbiome\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;

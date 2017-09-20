@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiology_web\Providers;
+namespace microbiome\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

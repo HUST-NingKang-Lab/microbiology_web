@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return "microbiome web";
 });
+
+//Route::get('/api/test', function () {
+//    return "sasad";
+//});
