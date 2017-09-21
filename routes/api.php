@@ -24,9 +24,7 @@ Route::get('/getProjectInfo', 'ProjectController@getProjectInfo');
 Route::get('/getSampleList','SampleController@getSampleList');
 Route::get('/getSampleInfo','SampleController@getSampleInfo');
 
-Route::get('/getRunList','SampleController@getRunList');
-Route::get('/getRunInfo','SampleController@getRunInfo');
-
-
+Route::get('/getRunList','RunController@getRunList');
+Route::get('/getRunInfo','RunController@getRunInfo');
 
 Route::get('/test', 'Test@test');

@@ -13,6 +13,7 @@
 
 Route::get('/', function () {
     return "microbiome web";
+//    return $errors;
 });
 
 //Route::get('/api/test', function () {
