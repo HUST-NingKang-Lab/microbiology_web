@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiome\Http\Middleware;
+namespace Microbiome\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

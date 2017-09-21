@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiome\Providers;
+namespace Microbiome\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;

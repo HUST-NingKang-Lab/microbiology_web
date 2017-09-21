@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(microbiome\User::class, function (Faker\Generator $faker) {
+$factory->define(Microbiome\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [

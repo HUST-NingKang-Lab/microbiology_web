@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiome;
+namespace Microbiome;
 
 use Illuminate\Database\Eloquent\Model;
 

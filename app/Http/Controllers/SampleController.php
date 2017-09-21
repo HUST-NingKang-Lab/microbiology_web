@@ -1,11 +1,11 @@
 <?php
 
-namespace microbiome\Http\Controllers;
+namespace Microbiome\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use microbiome\Project;
-use microbiome\Sample;
+use Microbiome\Project;
+use Microbiome\Sample;
 
 
 class SampleController extends Controller

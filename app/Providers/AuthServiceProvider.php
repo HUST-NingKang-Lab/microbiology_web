@@ -1,6 +1,6 @@
 <?php
 
-namespace microbiome\Providers;
+namespace Microbiome\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'microbiome\Model' => 'microbiome\Policies\ModelPolicy',
+        'Microbiome\Model' => 'Microbiome\Policies\ModelPolicy',
     ];
 
     /**

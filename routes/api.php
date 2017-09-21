@@ -20,11 +20,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/getProjectList', 'ProjectController@getProjectList');
 Route::get('/getProjectInfo', 'ProjectController@getProjectInfo');
+Route::get('/getProjectNum', 'ProjectController@getProjectNum');
 
-Route::get('/getSampleList','SampleController@getSampleList');
-Route::get('/getSampleInfo','SampleController@getSampleInfo');
+Route::get('/getSampleList', 'SampleController@getSampleList');
+Route::get('/getSampleInfo', 'SampleController@getSampleInfo');
 
-Route::get('/getRunList','RunController@getRunList');
-Route::get('/getRunInfo','RunController@getRunInfo');
+Route::get('/getRunList', 'RunController@getRunList');
+Route::get('/getRunInfo', 'RunController@getRunInfo');
+Route::get('/getRunQC','RunController@getRunQC');
+Route::get('/getRunTaxonomy','RunController@getRunTaxonomy');
+Route::get('/getRunGO','RunController@getRunGO');
+
+Route::post('/metaStormsSearch', 'SearchController@metaStormsSearch');
 
 Route::get('/test', 'Test@test');

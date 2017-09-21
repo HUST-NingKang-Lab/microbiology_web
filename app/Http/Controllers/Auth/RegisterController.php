@@ -1,9 +1,9 @@
 <?php
 
-namespace microbiome\Http\Controllers\Auth;
+namespace Microbiome\Http\Controllers\Auth;
 
-use microbiome\User;
-use microbiome\Http\Controllers\Controller;
+use Microbiome\User;
+use Microbiome\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 

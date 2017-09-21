@@ -1,8 +1,8 @@
 <?php
 
-namespace microbiome\Http\Controllers\Auth;
+namespace Microbiome\Http\Controllers\Auth;
 
-use microbiome\Http\Controllers\Controller;
+use Microbiome\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
