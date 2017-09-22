@@ -43,29 +43,59 @@ class RunController extends Controller
         $request->validate([
             'Run_Accession' => 'required'
         ]);
-        $run = Run::where('Run', $request->input('Run_Accession'))->get();
+        $run = Run::where('run_accession', $request->input('Run_Accession'))->get();
         if (count($run) !== 1) {
             return JsonResponse::create(['error_code' => 1, 'error_message' => 'invalid Run_Accession']);
         }
 
         $Run_Accession = $request->input('Run_Accession');
-        $path = '/home/microbiome_web/analysis_output/run/'.$Run_Accession;
-        $QC = $path.'/NGSQC_out/output_'.$Run_Accession.'.fastq.html';
+        $path = '/home/microbiome_web/analysis_output/run/' . $Run_Accession;
+        $QC = $path . '/NGSQC_out/output_' . $Run_Accession . '.fastq.html';
+        if (!file_exists($QC)){
+            return JsonResponse::create(['error_code' => 1, 'error_message' => 'No QC data available']);
+        }
         $html = HtmlDomParser::file_get_html($QC);
-        $table = $html->find('table',4);
+        $table = $html->find('table', 4);
         $table_array = [];
-        foreach ($table->children() as $c){
+        foreach ($table->children() as $c) {
             $table_array[$c->children(0)->plaintext] = $c->children(1)->plaintext;
         }
         return JsonResponse::create(['error_code' => 0, 'data' => $table_array]);
     }
 
-    public function getRunTaxonomy(){
-
+    public function getRunTaxonomy(Request $request)
+    {
+        $request->validate([
+            'Run_Accession' => 'required'
+        ]);
+        $run = Run::where('run_accession', $request->input('Run_Accession'))->get();
+        if (count($run) !== 1) {
+            return JsonResponse::create(['error_code' => 1, 'error_message' => 'invalid Run_Accession']);
+        }
+        $Run_Accession = $request->input('Run_Accession');
+        $path = '/home/microbiome_web/analysis_output/run/' . $Run_Accession . '/Result/';
+        $taxa = $path . 'taxonomy.html';
+        if (!file_exists($taxa)){
+            return JsonResponse::create(['error_code' => 1, 'error_message' => 'No taxa data available']);
+        }
+        return file_get_contents($taxa);
     }
 
-    public function getGO()
+    public function getRunGO(Request $request)
     {
-
+        $request->validate([
+            'Run_Accession' => 'required'
+        ]);
+        $run = Run::where('run_accession', $request->input('Run_Accession'))->get();
+        if (count($run) !== 1) {
+            return JsonResponse::create(['error_code' => 1, 'error_message' => 'invalid Run_Accession']);
+        }
+        $Run_Accession = $request->input('Run_Accession');
+        $path = '/home/microbiome_web/analysis_output/run/' . $Run_Accession . '/';
+        $GO = $path.$Run_Accession.'_goslim_countgo_com.csv';
+        if (!file_exists($GO)){
+            return JsonResponse::create(['error_code' => 1, 'error_message' => 'No GO data available']);
+        }
+        return file_get_contents($GO);
     }
 }

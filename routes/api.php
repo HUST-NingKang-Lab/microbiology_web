@@ -32,5 +32,17 @@ Route::get('/getRunTaxonomy','RunController@getRunTaxonomy');
 Route::get('/getRunGO','RunController@getRunGO');
 
 Route::post('/metaStormsSearch', 'SearchController@metaStormsSearch');
+Route::post('/taxonomyAnalysis', 'SearchController@taxonomyAnalysis');
+
 
 Route::get('/test', 'Test@test');
+
+//Resource
+Route::get('/hidden.png', function (Request $request) {
+//    return getcwd();
+    return file_get_contents('hidden.png');
+});
+Route::get('/meta_viewer.js', function (Request $request) {
+//    return getcwd();
+    return file_get_contents('meta_viewer.js');
+});
