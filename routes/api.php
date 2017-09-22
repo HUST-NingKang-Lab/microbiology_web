@@ -33,7 +33,8 @@ Route::get('/getRunGO','RunController@getRunGO');
 
 Route::post('/metaStormsSearch', 'SearchController@metaStormsSearch');
 Route::post('/taxonomyAnalysis', 'SearchController@taxonomyAnalysis');
-
+Route::get('/getTaskStatus','SearchController@getTaskStatus');
+Route::get('downloadTaxonomyAnalysis','SearchController@downloadTaxonomyAnalysis');
 
 Route::get('/test', 'Test@test');
 

@@ -40,20 +40,21 @@ class Test extends Controller
 //        }
 
 
-        $id = $request->input('id');
-        $path = '/home/microbiome_web/analysis_output/run/'.$id;
-        $QC = $path.'/NGSQC_out/output_'.$id.'.fastq.html';
-        $html = HtmlDomParser::file_get_html($QC);
-        $table = $html->find('table',4);
-        $table_array = [];
-        foreach ($table->children() as $c){
-            $table_array[$c->children(0)->plaintext] = $c->children(1)->plaintext;
-        }
-//        echo $table->children(0)->plaintext;
-        return $table_array;
+//        $id = $request->input('id');
+//        $path = '/home/microbiome_web/analysis_output/run/'.$id;
+//        $QC = $path.'/NGSQC_out/output_'.$id.'.fastq.html';
+//        $html = HtmlDomParser::file_get_html($QC);
+//        $table = $html->find('table',4);
+//        $table_array = [];
+//        foreach ($table->children() as $c){
+//            $table_array[$c->children(0)->plaintext] = $c->children(1)->plaintext;
+//        }
+////        echo $table->children(0)->plaintext;
+//        return $table_array;
 
 //        preg_match('/QC statistics./',file_get_contents($QC),$matches);
 //        return file_get_contents($QC);
+        $zip = new \ZipArchive();
 
     }
 

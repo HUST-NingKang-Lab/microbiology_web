@@ -10,3 +10,4 @@ Homestead.yaml
 npm-debug.log
 .env
 woker/vendor/
+public/download/
