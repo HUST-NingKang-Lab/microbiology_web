@@ -31,7 +31,7 @@ class RunController extends Controller
         $request->validate([
             'Run_Accession' => 'required'
         ]);
-        $run = Run::where('Run', $request->input('Run_Accession'))->get();
+        $run = Run::where('run_accession', $request->input('Run_Accession'))->get();
         if (count($run) !== 1) {
             return JsonResponse::create(['error_code' => 1, 'error_message' => 'invalid Run_Accession']);
         }
