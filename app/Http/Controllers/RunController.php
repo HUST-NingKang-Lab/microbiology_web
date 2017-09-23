@@ -5,7 +5,10 @@ namespace Microbiome\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Microbiome\Project;
+use Microbiome\Project_Sample;
 use Microbiome\Run;
+use Microbiome\Sample_run;
 use Psy\Exception\RuntimeException;
 use Sunra\PhpSimple\HtmlDomParser;
 
@@ -96,6 +99,7 @@ class RunController extends Controller
         if (!file_exists($GO)){
             return JsonResponse::create(['error_code' => 1, 'error_message' => 'No GO data available']);
         }
+
         return file_get_contents($GO);
     }
 

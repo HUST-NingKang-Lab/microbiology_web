@@ -35,4 +35,9 @@ class Sample extends Model
 
 class Sample_run extends Model{
     protected $table = 'sample_run';
+
+    public static function findByRun($run_accession)
+    {
+        return Sample_run::where('run',$run_accession)->get();
+    }
 }
