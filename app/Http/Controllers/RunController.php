@@ -99,8 +99,16 @@ class RunController extends Controller
         if (!file_exists($GO)){
             return JsonResponse::create(['error_code' => 1, 'error_message' => 'No GO data available']);
         }
-
-        return file_get_contents($GO);
+//        $str = file_get_contents($GO);
+        $file = fopen($GO,'r');
+        $res = [];
+        while (($line = fgets($file)) !== false){
+            $line = trim($line);
+            $line = str_replace('"','',$line);
+            $items = explode(',',$line);
+            $res[$items[2]][$items[1]] = (int)($items[3]);
+        }
+        return JsonResponse::create(['error_code' => 0, 'data' => $res]);
     }
 
     public function getRunResults(Request $request)
