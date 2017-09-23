@@ -98,4 +98,12 @@ class RunController extends Controller
         }
         return file_get_contents($GO);
     }
+
+    public function getRunResults(Request $request)
+    {
+        $GO = $this->getRunGO($request)->original;
+        $taxa = $this->getRunTaxonomy($request)->original;
+        $QC = $this->getRunQC($request)->original;
+        return ['GO'=>$GO,'QC'=>$QC,'Taxa'=>$taxa];
+    }
 }

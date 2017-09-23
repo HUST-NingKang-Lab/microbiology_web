@@ -32,6 +32,8 @@ Route::get('/getRunInfo', 'RunController@getRunInfo');
 Route::get('/getRunQC','RunController@getRunQC');
 Route::get('/getRunTaxonomy','RunController@getRunTaxonomy');
 Route::get('/getRunGO','RunController@getRunGO');
+Route::get('/getRunResults','RunController@getRunResults');
+
 
 Route::post('/metaStormsSearch', 'SearchController@metaStormsSearch');
 Route::post('/taxonomyAnalysis', 'SearchController@taxonomyAnalysis');
