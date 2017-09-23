@@ -25,7 +25,3 @@ class Run extends Model
         return $this->attributes['project'] = $project;
     }
 }
-
-class Sample_run extends Model{
-    protected $table = 'sample_run';
-}

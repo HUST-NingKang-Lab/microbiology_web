@@ -32,7 +32,3 @@ class Sample extends Model
         ];
     }
 }
-
-class Sample_run extends Model{
-    protected $table = 'sample_run';
-}
