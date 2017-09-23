@@ -22,6 +22,15 @@ class Sample extends Model
         $runs = Run::whereIn('run_accession',$runs)->get();
         return $this->attributes['runs'] = $runs;
     }
+
+    public function getBriefInfo(){
+        $meta_info = json_decode($this->getAttribute('meta_info'))->describe;
+        $accession = $this->getAttribute('SRA_Accession');
+        return [
+            'briefIntro'=>$meta_info,
+            'SRA_Accession'=>$accession
+        ];
+    }
 }
 
 class Sample_run extends Model{

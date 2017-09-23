@@ -13,15 +13,20 @@ class Project extends Model
     protected $hidden = ['id', 'updated_at', 'created_at', 'classification_id'];
     protected $appends = ['sample_num', 'biome', 'samples', 'runs'];
 
-//    protected $primaryKey = '';
 
     public function getSamplesAttribute()
     {
-        $samples = $this->hasMany('Microbiome\project_sample', 'project', 'NCBI_Accession')->get();
-        foreach ($samples as $s) {
-            $this->attributes['samples'][] = $s->sample;
+        $res = $this->hasMany('Microbiome\project_sample', 'project', 'NCBI_Accession')->get();
+        $samples = [];
+        foreach ($res as $s) {
+            $samples[] = $s->sample;
         }
-        return $this->attributes['samples'];
+        $samples = Sample::whereIn('SRA_Accession',$samples)->get();
+        $res = [];
+        foreach ($samples as $s){
+            $res[] = $s->getBriefInfo();
+        }
+        return $this->attributes['samples'] = $res;
     }
 
     public function getSampleNumAttribute()
@@ -44,7 +49,11 @@ class Project extends Model
 
     public function getRunsAttribute()
     {
-        $samples = $this->attributes['samples'];
+        $res = $this->hasMany('Microbiome\project_sample', 'project', 'NCBI_Accession')->get();
+        $samples = [];
+        foreach ($res as $s) {
+            $samples[] = $s->sample;
+        }
         $res = DB::table('sample_run')
             ->whereIn('sample', $samples)
             ->select('run')
