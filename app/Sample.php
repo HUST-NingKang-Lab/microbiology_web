@@ -10,7 +10,7 @@ class Sample extends Model
     protected $table = 'sample';
     protected $hidden = ['id', 'updated_at', 'created_at'];
 
-    protected $appends = ['runs'];
+    protected $appends = ['runs','project'];
 
     public function getRunsAttribute()
     {
@@ -30,5 +30,13 @@ class Sample extends Model
             'briefIntro'=>$meta_info,
             'SRA_Accession'=>$accession
         ];
+    }
+
+    public function getProjectAttribute()
+    {
+        $sample = $this->attributes['SRA_Accession'];
+        $project = Project_Sample::where('sample',$sample)->get()[0]->project;
+        $project = Project::where('NCBI_Accession',$project)->get()[0]->object_id;
+        return $this->attributes['project'] = $project;
     }
 }
