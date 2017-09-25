@@ -68,8 +68,3 @@ class Project extends Model
     }
 
 }
-
-class Project_Sample extends Model
-{
-    protected $table = 'project_sample';
-}

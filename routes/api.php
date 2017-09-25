@@ -26,6 +26,8 @@ Route::get('/getProjectBiome', 'ProjectController@getProjectBiome');
 
 Route::get('/getSampleList', 'SampleController@getSampleList');
 Route::get('/getSampleInfo', 'SampleController@getSampleInfo');
+Route::get('getTotalNumberOfSamples','SampleController@getTotalNumberOfSamples');
+
 
 Route::get('/getRunList', 'RunController@getRunList');
 Route::get('/getRunInfo', 'RunController@getRunInfo');
@@ -33,12 +35,16 @@ Route::get('/getRunQC','RunController@getRunQC');
 Route::get('/getRunTaxonomy','RunController@getRunTaxonomy');
 Route::get('/getRunGO','RunController@getRunGO');
 Route::get('/getRunResults','RunController@getRunResults');
-
+Route::get('/getTotalNumberOfRuns','RunController@getTotalNumberOfRuns');
 
 Route::post('/metaStormsSearch', 'SearchController@metaStormsSearch');
 Route::post('/taxonomyAnalysis', 'SearchController@taxonomyAnalysis');
 Route::get('/getTaskStatus','SearchController@getTaskStatus');
 Route::get('downloadTaxonomyAnalysis','SearchController@downloadTaxonomyAnalysis');
+
+Route::get('/getBiomes','ClassificationController@getBiomes');
+
+
 
 Route::get('/test', 'Test@test');
 

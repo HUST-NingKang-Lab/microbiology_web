@@ -3,34 +3,26 @@
 namespace Microbiome\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Microbiome\Project;
-use Microbiome\Sample;
+use Microbiome\Sample as Sample;
 
 
 class SampleController extends Controller
 {
     public function getSampleList(Request $request)
     {
-        $request->validate([
-            'project_id'=>'required'
-        ]);
-        $project = Project::where('object_id',$request->input('project_id'))->get();
-        if (count($project) !== 1) {
-            return JsonResponse::create(['error_code' => 1, 'error_message' => 'invalid id for project']);
-        }
-        $NCBI_Accession = $project[0]->NCBI_Accession;
-
-        $res = DB::table('project_sample')
-            ->where('project',$NCBI_Accession)
-            ->select(DB::raw('sample as SRA_Accession'))
+        $pageSize = $request->input('pageSize', 20);
+        $currentPage = $request->input('currentPage', 1);
+        $samples = Sample::offset($pageSize * ($currentPage - 1))
+            ->limit($pageSize)
             ->get();
-        $res_array['SRA_Accessions'] = [];
-        foreach ($res as $r){
-            $res_array['SRA_Accessions'][] = $r->SRA_Accession;
+        foreach ($samples as &$sample){
+            $sample->meta_info = json_decode($sample->meta_info);
+            $sample->briefIntro = $sample->meta_info->describe;
         }
-        return JsonResponse::create(['error_code' => 0, 'data' => $res_array]);
-
+        $res['pageSize'] = $pageSize;
+        $res['currentPage'] = $currentPage;
+        $res['samples'] = $samples;
+        return JsonResponse::create(['error_code' => 0, 'data' => $res]);;
     }
 
     public function getSampleInfo(Request $request)
@@ -44,5 +36,11 @@ class SampleController extends Controller
         }
         $sample[0]->meta_info = json_decode($sample[0]->meta_info);
         return JsonResponse::create(['error_code' => 0, 'data' => $sample[0]]);
+    }
+
+    public function getTotalNumberOfSamples()
+    {
+        $res['totalNumberOfSamples'] = Sample::all()->count();
+        return JsonResponse::create(['error_code' => 0, 'data' => $res]);
     }
 }

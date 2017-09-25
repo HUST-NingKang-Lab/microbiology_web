@@ -16,17 +16,15 @@ class RunController extends Controller
 {
     public function getRunList(Request $request)
     {
-        $request->validate([
-            'SRA_Accession' => 'required'
-        ]);
-        $res = DB::table('sample_run')
-            ->where('sample', $request->input('SRA_Accession'))
+        $pageSize = $request->input('pageSize', 20);
+        $currentPage = $request->input('currentPage', 1);
+        $runs = Run::offset($pageSize * ($currentPage - 1))
+            ->limit($pageSize)
             ->get();
-        $res_array['Run_Accessions'] = [];
-        foreach ($res as $r) {
-            $res_array['Run_Accessions'][] = $r->run;
-        }
-        return JsonResponse::create(['error_code' => 0, 'data' => $res_array]);
+        $res['pageSize'] = $pageSize;
+        $res['currentPage'] = $currentPage;
+        $res['runs'] = $runs;
+        return JsonResponse::create(['error_code' => 0, 'data' => $res]);
     }
 
     public function getRunInfo(Request $request)
@@ -117,5 +115,11 @@ class RunController extends Controller
         $taxa = $this->getRunTaxonomy($request)->original;
         $QC = $this->getRunQC($request)->original;
         return ['GO'=>$GO,'QC'=>$QC,'Taxa'=>$taxa];
+    }
+
+    public function getTotalNumberOfRuns()
+    {
+        $res['totalNumberOfRuns'] = Run::all()->count();
+        return JsonResponse::create(['error_code' => 0, 'data' => $res]);
     }
 }
