@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Microbiome\Run;
 use Microbiome\Sample;
+use Microbiome\ProjectSample;
 
 class Project extends Model
 {
@@ -16,7 +17,7 @@ class Project extends Model
 
     public function getSamplesAttribute()
     {
-        $res = $this->hasMany('Microbiome\project_sample', 'project', 'NCBI_Accession')->get();
+        $res = $this->hasMany('Microbiome\ProjectSample', 'project', 'NCBI_Accession')->get();
         $samples = [];
         foreach ($res as $s) {
             $samples[] = $s->sample;
@@ -31,7 +32,7 @@ class Project extends Model
 
     public function getSampleNumAttribute()
     {
-        $samples = $this->hasMany('Microbiome\project_sample', 'project', 'NCBI_Accession')->get();
+        $samples = $this->hasMany('Microbiome\ProjectSample', 'project', 'NCBI_Accession')->get();
         return $this->attributes['sample_num'] = count($samples);
     }
 
@@ -49,7 +50,7 @@ class Project extends Model
 
     public function getRunsAttribute()
     {
-        $res = $this->hasMany('Microbiome\project_sample', 'project', 'NCBI_Accession')->get();
+        $res = $this->hasMany('Microbiome\ProjectSample', 'project', 'NCBI_Accession')->get();
         $samples = [];
         foreach ($res as $s) {
             $samples[] = $s->sample;
