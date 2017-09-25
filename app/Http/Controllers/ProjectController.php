@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Microbiome\Classification;
 use Microbiome\Project;
-use Microbiome\Project_Sample;
+use Microbiome\ProjectSample;
 
 class ProjectController extends Controller
 {
@@ -17,7 +17,7 @@ class ProjectController extends Controller
         $currentPage = $request->input('currentPage', 1);
         $biome_id = $request->input('biome_id', '');
         if (!empty($biome_id)){
-            $projects = Project_Sample::whereIn();
+            $projects = ProjectSample::whereIn();
         }
         $res = Project::offset($pageSize * ($currentPage - 1))
             ->limit($pageSize)

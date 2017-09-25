@@ -14,7 +14,7 @@ class Sample extends Model
 
     public function getRunsAttribute()
     {
-        $res = $this->hasMany('Microbiome\Sample_run','sample','SRA_Accession')->get();
+        $res = $this->hasMany('Microbiome\SampleRun','sample','SRA_Accession')->get();
         $runs = [];
         foreach ($res as $r){
             $runs[] = $r->run;
@@ -35,7 +35,7 @@ class Sample extends Model
     public function getProjectAttribute()
     {
         $sample = $this->attributes['SRA_Accession'];
-        $project = Project_Sample::where('sample',$sample)->get()[0]->project;
+        $project = ProjectSample::where('sample',$sample)->get()[0]->project;
         $project = Project::where('NCBI_Accession',$project)->get()[0]->object_id;
         return $this->attributes['project'] = $project;
     }

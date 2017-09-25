@@ -6,9 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Microbiome\Project;
-use Microbiome\Project_Sample;
 use Microbiome\Run;
-use Microbiome\Sample_run;
 use Psy\Exception\RuntimeException;
 use Sunra\PhpSimple\HtmlDomParser;
 

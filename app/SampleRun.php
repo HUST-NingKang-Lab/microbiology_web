@@ -4,7 +4,7 @@ namespace Microbiome;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sample_run extends Model
+class SampleRun extends Model
 {
     protected $table = 'sample_run';
 }
