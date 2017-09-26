@@ -285,7 +285,25 @@ class RunController extends Controller
         return JsonResponse::create(['error_code' => 0, 'data' => $res]);
     }
 
-    private function dumpToCSV($data,$file){
-
+    public function getRunsWithGO(Request $request)
+    {
+        $object_id = $request->input('object_id');
+        $project = Project::where('object_id',$object_id)->get()[0];
+        $runs = $project->runs;
+        foreach ($runs as $k=>$v){
+            $path = '/home/microbiome_web/analysis_output/run/' . $v->run_accession . '/';
+            $GO = $path.$v->run_accession.'_goslim_countgo_com.csv';
+            if (!file_exists($GO)){
+//                return JsonResponse::create(['error_code' => 1, 'error_message' => 'No GO data available for '.$run]);
+                unset($runs[$k]);
+            }
+        }
+        $res = [];
+        foreach ($runs as $run){
+            $res[] = $run;
+        }
+        return JsonResponse::create(['error_code' => 0, 'data' => $res]);
+        return $res;
     }
+
 }

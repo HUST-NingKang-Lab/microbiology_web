@@ -17,7 +17,8 @@ class ProjectController extends Controller
         $currentPage = $request->input('currentPage', 1);
         $biome_id = $request->input('biome_id', '');
         if (!empty($biome_id)){
-            $projects = ProjectSample::whereIn();
+            $projects = Project::where('classification_id',$biome_id)->get();
+            return JsonResponse::create(['error_code' => 0, 'data' => $projects]);
         }
         $res = Project::offset($pageSize * ($currentPage - 1))
             ->limit($pageSize)
