@@ -36,6 +36,12 @@ Route::get('/getRunTaxonomy','RunController@getRunTaxonomy');
 Route::get('/getRunGO','RunController@getRunGO');
 Route::get('/getRunResults','RunController@getRunResults');
 Route::get('/getTotalNumberOfRuns','RunController@getTotalNumberOfRuns');
+Route::get('/getRunsWithGO','RunController@getRunsWithGO');
+Route::get('/getRunsWithTaxonomy','RunController@getRunsWithTaxonomy');
+Route::post('/getGOHeatMap','RunController@getGOHeatMap');
+Route::get('/getTaxonomyHeatMap','RunController@getGOHeatMap');
+Route::post('/getGOOfRuns','RunController@getGOOfRuns');
+
 
 Route::post('/metaStormsSearch', 'SearchController@metaStormsSearch');
 Route::post('/taxonomyAnalysis', 'SearchController@taxonomyAnalysis');

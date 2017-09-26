@@ -1,4 +1,4 @@
-library(heatmap3)
+#library(heatmap3)
 
 args = commandArgs(TRUE)
 input = args[1]
@@ -13,5 +13,5 @@ png(output,    # create PNG for the heat map
     res = 600,            # 300 pixels per inch
     pointsize = 8)        # smaller font size
 
-heatmap3(GO_table,margins=c(6,12),cexRow=0.5, cexCol=1.0)
+heatmap(GO_table,margins=c(6,12),cexRow=0.5, cexCol=1.0)
 dev.off()
