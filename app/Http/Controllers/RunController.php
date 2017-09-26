@@ -249,9 +249,9 @@ class RunController extends Controller
         $process->run();
         unset($res);
         $res = [];
-        $res['cellular_component'] = "/storage/$GOs.CC.png";
-        $res['molecular_function'] = "/storage/$GOs.MF.png";
-        $res['biological_process'] = "/storage/$GOs.BP.png";
+        $res['cellular_component'] = "/storage/$GOs.CC.csv.png";
+        $res['molecular_function'] = "/storage/$GOs.MF.csv.png";
+        $res['biological_process'] = "/storage/$GOs.BP.csv.png";
         return JsonResponse::create(['error_code' => 0, 'data' => $res]);
 
     }
