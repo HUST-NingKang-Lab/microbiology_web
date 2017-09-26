@@ -10,7 +10,7 @@ class Sample extends Model
     protected $table = 'sample';
     protected $hidden = ['id', 'updated_at', 'created_at'];
 
-    protected $appends = ['runs','project'];
+    protected $appends = ['runs','project','biome'];
 
     public function getRunsAttribute()
     {
@@ -43,5 +43,12 @@ class Sample extends Model
         $project = ProjectSample::where('sample',$sample)->get()[0]->project;
         $project = Project::where('NCBI_Accession',$project)->get()[0]->object_id;
         return $this->attributes['project'] = $project;
+    }
+
+    public function getBiomeAttribute()
+    {
+        $project = $this->attributes['project'];
+        $project = Project::where('object_id',$project)->get()[0];
+        return $this->attributes['biome'] = $project->biome;
     }
 }
