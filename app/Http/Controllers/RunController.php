@@ -93,7 +93,7 @@ class RunController extends Controller
         $path = '/home/microbiome_web/analysis_output/run/' . $Run_Accession . '/';
         $GO = $path.$Run_Accession.'_goslim_countgo_com.csv';
         if (!file_exists($GO)){
-            return JsonResponse::create(['error_code' => 1, 'error_message' => 'No GO data available']);
+            return JsonResponse::create(['error_code' => 1, 'error_message' => 'No GO data available'.$GO]);
         }
 //        $str = file_get_contents($GO);
         $file = fopen($GO,'r');

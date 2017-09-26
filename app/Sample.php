@@ -24,7 +24,12 @@ class Sample extends Model
     }
 
     public function getBriefInfo(){
-        $meta_info = json_decode($this->getAttribute('meta_info'))->describe;
+        $meta_info = json_decode($this->getAttribute('meta_info'));
+        if (empty($meta_info->describe)){
+            $meta_info = 'sample description';
+        }else{
+            $meta_info = $meta_info->describe;
+        }
         $accession = $this->getAttribute('SRA_Accession');
         return [
             'briefIntro'=>$meta_info,

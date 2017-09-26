@@ -2,7 +2,6 @@
 require_once __DIR__ . '/vendor/autoload.php';
 use Workerman\Worker;
 
-
 $worker = new Worker('tcp://0.0.0.0:8484');
 $worker->count = 1;
 $worker->onWorkerStart = function($worker)
