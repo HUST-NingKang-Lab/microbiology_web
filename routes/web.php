@@ -19,3 +19,6 @@ Route::get('/', function () {
 //Route::get('/api/test', function () {
 //    return "sasad";
 //});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
